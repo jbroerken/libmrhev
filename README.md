@@ -12,7 +12,7 @@ application service parent. It is also used to implement the event sending for t
 
 This library manages the given queue information from the MRH core and the reading and writing of the 
 specified queue mechanisms.
-libmrhev also manages event queues limitations like, for example, the event send limit.
+libmrhev also manages event queue limitations like, for example, the event send limit.
 
 
 ## Requirements
