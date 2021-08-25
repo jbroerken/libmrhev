@@ -31,7 +31,6 @@ project(libmrhev VERSION 1.0
                  DESCRIPTION "Event queue management library for the MRH Platform"
                  LANGUAGES C)
 
-
 #########################################################################
 #
 #  PATHS
@@ -63,16 +62,16 @@ set(SRC_DIR_PATH "${CMAKE_SOURCE_DIR}/src/")
 set(INCLUDE_DIR_PATH "${CMAKE_SOURCE_DIR}/include/")
 
 set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhev/Error/MRH_EventQueueError.c"
-					"${SRC_DIR_PATH}/libmrhev/Error/MRH_EventQueueErrorInternal.h"
-					"${SRC_DIR_PATH}/libmrhev/Source/MRH_SourcePipe.c"
-					"${SRC_DIR_PATH}/libmrhev/Source/MRH_SourcePipe.h"
-					"${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdatePipe.c"
-					"${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdatePipe.h"
-					"${SRC_DIR_PATH}/libmrhev/MRH_EventQueue.h"
-					"${SRC_DIR_PATH}/libmrhev.c"
-					"${INCLUDE_DIR_PATH}/libmrhev/libmrhev/Error/MRH_EventQueueError.h"
-					"${INCLUDE_DIR_PATH}/libmrhev/libmrhev/MRH_EvRevision.h"
-					"${INCLUDE_DIR_PATH}/libmrhev/libmrhev.h")
+                    "${SRC_DIR_PATH}/libmrhev/Error/MRH_EventQueueErrorInternal.h"
+                    "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourcePipe.c"
+                    "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourcePipe.h"
+                    "${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdatePipe.c"
+                    "${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdatePipe.h"
+                    "${SRC_DIR_PATH}/libmrhev/MRH_EventQueue.h"
+                    "${SRC_DIR_PATH}/libmrhev.c"
+                    "${INCLUDE_DIR_PATH}/libmrhev/libmrhev/Error/MRH_EventQueueError.h"
+                    "${INCLUDE_DIR_PATH}/libmrhev/libmrhev/MRH_EvRevision.h"
+                    "${INCLUDE_DIR_PATH}/libmrhev/libmrhev.h")
 
 #
 # TODO: Implement MRHCKM with lib check
@@ -107,23 +106,23 @@ set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared")
 ###
 add_library(libmrhev_Shared SHARED ${SRC_LIST_GLOBAL})
 set_target_properties(libmrhev_Shared
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhev"
-					  SUFFIX ".so"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhev"
+                      SUFFIX ".so"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 					  
 add_library(libmrhev_Static STATIC ${SRC_LIST_GLOBAL})
 set_target_properties(libmrhev_Static
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhev"
-					  SUFFIX ".a"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhev"
+                      SUFFIX ".a"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 
 ###
 #  Required Libraries
