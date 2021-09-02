@@ -27,9 +27,10 @@ set(CMAKE_C_STANDARD 99)
 #  ------------
 #  General simple information about our project.
 ###
-project(libmrhev VERSION 1.0
+project(libmrhev VERSION 1.0.0
                  DESCRIPTION "Event queue management library for the MRH Platform"
                  LANGUAGES C)
+set(LIB_SO_VERSION 1)
 
 #########################################################################
 #
@@ -38,12 +39,11 @@ project(libmrhev VERSION 1.0
 #########################################################################
 
 ###
-#  Binary Paths
-#  ------------
-#  The paths for our created binary file(s).
+#  Install Paths
+#  -------------
+#  GNU system paths for installation.
 ###
-set(BIN_DIR_PATH "${CMAKE_SOURCE_DIR}/lib/")
-file(MAKE_DIRECTORY ${BIN_DIR_PATH})
+include(GNUInstallDirs)
 
 ###
 #  Build Paths
@@ -85,13 +85,11 @@ set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhev/Error/MRH_EventQueueError.c"
 #					"${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdateMRHCKM.h")
 
 ###
-#  Library Paths
-#  -------------
-#  The paths to the external libraries to use. 
-#  Both the binary and include paths should be set here.
-#  Add OS specific libraries in their own lists.
+#  Public API Path
+#  ---------------
+#  The path to the public api include folder.
 ###
-set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared")
+set(PUBLIC_API_DIR_PATH "${INCLUDE_DIR_PATH}/libmrhev")
 					 
 #########################################################################
 #
@@ -107,26 +105,20 @@ set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared")
 add_library(libmrhev_Shared SHARED ${SRC_LIST_GLOBAL})
 set_target_properties(libmrhev_Shared
                       PROPERTIES
-                      PREFIX ""
-                      OUTPUT_NAME "libmrhev"
+                      PREFIX "lib"
+                      OUTPUT_NAME "mrhev"
                       SUFFIX ".so"
-                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
-					  
-add_library(libmrhev_Static STATIC ${SRC_LIST_GLOBAL})
-set_target_properties(libmrhev_Static
-                      PROPERTIES
-                      PREFIX ""
-                      OUTPUT_NAME "libmrhev"
-                      SUFFIX ".a"
-                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      VERSION ${PROJECT_VERSION}
+                      SOVERSION ${LIB_SO_VERSION})
 
 ###
-#  Required Libraries
-#  ------------------
-#  Libraries and / or headers required by this library.
+#  Install
+#  -------
+#  Library installation.
 ###
-include_directories(${LIB_INCLUDE_LIST})
+install(TARGETS libmrhev_Shared
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY "${PUBLIC_API_DIR_PATH}/"
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILES_MATCHING
+        PATTERN "*.h")
