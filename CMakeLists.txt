@@ -74,15 +74,12 @@ set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhev/Error/MRH_EventQueueError.c"
                     "${INCLUDE_DIR_PATH}/libmrhev/libmrhev.h")
 
 #
-# TODO: Implement MRHCKM with lib check
+# @TODO: Implement MRHCKM with lib check
 #
-#if()
-#endif()
-#
-#set(SRC_LIST_MRHCKM "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourceMRHCKM.c"
-#				    "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourceMRHCKM.h"
-#					"${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdateMRHCKM.c"
-#					"${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdateMRHCKM.h")
+# set(SRC_LIST_MRHCKM "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourceMRHCKM.c"
+# 				      "${SRC_DIR_PATH}/libmrhev/Source/MRH_SourceMRHCKM.h"
+#					  "${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdateMRHCKM.c"
+#					  "${SRC_DIR_PATH}/libmrhev/MRH_QueueUpdateMRHCKM.h")
 
 ###
 #  Public API Path
