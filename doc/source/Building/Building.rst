@@ -31,6 +31,21 @@ Build Process
 The build process should be relatively straightforward:
 
 1. Aqquire dependencies.
-2. Compile Makefiles with the included CMakeLists.txt
-3. Move to the "build" folder and run make.
-4. Install the compiled library and its header files.
+2. Move into the project "build" folder.
+3. Compile Makefiles with the included CMakeLists.txt.
+4. Run "make" to compile the library.
+5. Install the compiled library and its header files.
+
+
+Shell Commands
+--------------
+The following shell commands will create makefiles with the 
+provided CMakeLists.txt, compile the project with the created 
+makefiles and install the library and headers:
+
+.. code-block::
+
+    cd <Project Root Folder>/build
+    cmake ..
+    make
+    sudo make install
